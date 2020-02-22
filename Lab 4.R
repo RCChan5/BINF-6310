@@ -132,16 +132,15 @@ lines( numTests, rep(log10(.05),length(numTests)),col="red")
 
 plot( numTests, estimatedPower)
 
+################################################Question 3##########################################################
+probs <- seq(0,1,0.001)
+
+plot(probs, dbeta(probs,6,6),col = "red")
+lines(probs, dbeta(probs,1,1),col = "green")
 
 
-
-
-
-
-
-
-
-
+#One with 1 heads and 1 tail as additional observations.
+plot(probs, dbeta(probs,1,1))
 
 
 
