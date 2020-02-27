@@ -2,7 +2,7 @@
 #(+|-)
 prior <- c(.001,.999)
 
-#(+|-)
+#likelihood(+|-)
 infected <- c(.91,.09)
 notInfected <- c(.16,.84)
 
@@ -80,6 +80,7 @@ getDataFromLikelihood <- function( likelihood, numPoints)
 
 numTests <- 1:20
 numSimulationsPerCycle <- 10000
+data <- getDataFromLikelihood( likelihoodGivenNotCylon, 2)
 
 averagePosteriorValue <- c(length=length(numTests))
 estimatedPower<- c(length=length(numTests))

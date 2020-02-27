@@ -142,8 +142,43 @@ lines(probs, dbeta(probs,1,1),col = "green")
 #One with 1 heads and 1 tail as additional observations.
 plot(probs, dbeta(probs,1,1))
 
+#One with 400 heads and 400 tails as additional observations.
+plot(probs, dbeta(probs,401,401))
 
+# alpha and beta prior variables
+alpha <- 1
+beta <- 1
+theta <- 0.5
 
+seqs <- seq(0,1,0.001)
+
+plot(seqs,dbeta(seqs,alpha,beta))
+
+flips <- ""
+
+for( i in 1:2 ) 
+{
+  flip = ifelse( runif(1) <= theta , "H", "T" );
+  
+  flips <- paste(flips, flip, sep="" )
+  
+  if( flip == "H")
+  { 
+    alpha <- alpha + 1;
+  }
+  else if ( flip == "T" ) 
+  {
+    beta <-beta + 1;
+  }
+  else 
+  {
+    stop("logic error")
+  }
+  
+  title <- paste('Flip ', i, ' with p(head) =', theta, '\n', flips,"\n", "alpha=",alpha,"beta=",beta)
+  plot(seqs,dbeta(seqs,alpha,beta), main = title)
+  Sys.sleep(0.3);
+}
 
 
 
